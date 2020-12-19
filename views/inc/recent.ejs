@@ -1,0 +1,39 @@
+<div id="recent" class="recentCited container" v-if="recent.length > 0">
+    
+        <h2>Recently Cited</h2>
+        <div class="toolbar">
+            <button class="clear btn color_danger" title="clear all recent" @click="clearAll">
+                <span class="fas fa-trash" aria-hidden="true"></span>
+            </button>
+            <button @click="sortRecent" :title="`sort ${ksort=='old'?'newest':'oldest'}`" class="btn btn_transparent">
+                <span :class="`fas fa-sort-amount-${ksort=='old'?'up':'down'}`"></span>
+            </button>
+        </div>
+        <ul class="recent_list">
+            <li class="recent_list-item" v-for="r in recent" >
+                <div class="citation" >
+                    <span class="type">APA</span>
+                    <p class="citation_text">{{r.MLA}}</p>
+                    <div class="citationTools text-align-right">
+                        <button class="btn btn_transparent copyCite" title="copy citation">
+                            <span class="fas fa-copy" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <span class="timestamp">date cited: {{(new Date(r.timestamp)).toDateString()}}</span>
+                </div>
+                <div class="citation" >
+                    <span class="type">MLA</span>                
+                    <p class="citation_text">{{r.APA}}</p>
+                    <div class="citationTools text-align-right">
+                        <button class="btn btn_transparent copyCite" title="copy citation">
+                            <span class="fas fa-copy" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <span class="timestamp">date cited: {{(new Date(r.timestamp)).toDateString()}}</span>
+
+                </div>
+            </li>
+        </ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="/js/recent.js"></script>

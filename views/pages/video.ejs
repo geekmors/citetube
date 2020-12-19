@@ -1,0 +1,60 @@
+<div class="container">
+    <%if(type==-1){%>
+    <h3 class="text-error">
+        missing url
+    </h3>
+    <p>
+        make sure to enter video url at the home page.
+    </p>
+    <a href="/">Go Back To Start</a>
+    <%}else if(type==0){%>
+    <h3 class="text-error">
+        URL is not valid
+    </h3>
+    <p>make sure to copy the URL straight from youtube.</p>
+    <a href="/">Go Back To Start</a>
+    <%}else{%>
+        <h2>Found</h2>
+    <div class="videoFound">
+        <img src="<%=imgThumb%>" alt="video thumbnail">
+        <div>
+
+            <h3><%=video_title%></h3>
+            <p><%=video_description.length>100?video_description.substr(0,100):video_description%></p>
+            <p class="text-bold"><%=video_channel%></p>
+            <div class="controls text-align-right">
+                <a title="create citation" class="btn btn_success" href="/cite/<%=videoId%>">Create Citation</a>
+                <a class="btn btn_success" href="https://www.youtube.com/?v=<%=videoId%>" target="_blank"
+                    title="open video in youtube">
+                    <span class="fas fa-external-link-alt" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <%}//endif%>
+</div>
+<style>
+    .videoFound {
+        display: grid;
+        grid-template-columns: 148px 1fr;
+        align-items: center;
+        background-color: #f2f2f2;
+        padding: 2%;
+        border-radius: 5px;
+    }
+    @media screen and (max-width: 768px){
+        .videoFound{
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .videoFound img{
+            max-width: 400px;
+            width: 100%;
+            margin: auto;
+        }
+        .controls{
+            text-align: center;
+            margin: 10px 0;
+        }
+    }
+</style>

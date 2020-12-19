@@ -1,0 +1,74 @@
+.material-field{
+    margin-bottom: 2%;
+   
+    width: 100%;
+    position: relative;
+    >*{
+        transition: all ease-in-out 0.3s;
+    }
+   &_input{
+        padding: 20px 16px 6px 16px;
+        border: none;
+        border-bottom:1px solid rgba(0,0,0,.42);
+        background-color: rgb(236, 236, 236);
+        color: black;
+        font-size: 18px;
+        width: 70%;
+        &:focus{
+            outline: none;
+        }
+    }
+    
+
+   &_label{
+        position: absolute;
+        left: 9px;
+        top: 12px;
+        color: #585858;
+        pointer-events: none;
+        z-index: 9;
+        &.date{
+            top: 1px;
+        }
+    }
+    
+    &_helper{
+        padding-top: 10px;
+        font-size: 14px;
+        color: #585858;
+    }
+    &.active{
+        .material-field_select-selected,.material-field_input{
+            border-bottom: 1px $color_primary solid;
+
+            .fas{
+                color: $color_primary;
+            }
+        }
+        .material-field_select-label,.material-field_label{
+            font-size: 14px;
+            top: 3px;
+            left: 16px;
+            color: $color_primary;
+            font-weight: bold;
+        }
+    }
+    &.error{
+        .material-field_input{
+            border-bottom: 1px $danger solid;
+        }
+        .material-field_label{
+            color: $danger;
+            font-weight: bold;
+        }
+        .material-field_helper{
+            padding-top: 10px;
+            font-size: 14px;
+            color: $danger;
+        }
+    }
+}
+
+label{
+    font-size: 18px;
+}

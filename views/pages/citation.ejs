@@ -1,0 +1,59 @@
+<div class="container">
+    <%if(type==0){%>
+        <p>
+            <%=message%>
+        </p>
+        <%}else{%>
+            <div class="toolbar-citation">
+                <a href="/#citeForm" class="btn btn_success">Create New Citation</a>
+            </div>
+            <div class="citations">
+                <div class="citation">
+                    <h2>APA</h2>
+                    <p class="citation_text">
+                        <%=citation.APA%>
+                    </p>
+                    <div class="citationTools text-align-right">
+                        <button class="btn btn_transparent copyCite" title="copy citation">
+                            <span class="fas fa-copy" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="citation">
+                    <h2>MLA</h2>
+                    <p class="citation_text">
+                        <%=citation.MLA%>
+                    </p>
+                    <div class="citationTools text-align-right">
+                        <button class="btn btn_transparent copyCite" title="copy citation">
+                            <span class="fas fa-copy" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+                (function(){
+                    function addRecent(current, newRecent){
+                        let exists = current.filter(recent=>recent.videoId == newRecent.videoId)
+                        
+                        if(exists.length == 0){
+                            current.push(newRecent)
+                            Data.set('recent', current)
+                        }
+                    }
+                    let recent = Data.get('recent')
+                    if(!recent){
+                        recent = []
+                    }
+                    addRecent(recent, {
+                        videoId:'<%=videoId%>',
+                        APA:'<%=citation.MLA%>', 
+                        MLA:'<%=citation.APA%>', 
+                        timestamp: Date()
+                    })
+                })()
+            </script>
+            <%}%>
+</div>

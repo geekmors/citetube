@@ -1,0 +1,32 @@
+<%-include('inc/head.ejs')%>
+    </head>
+
+    <body class="theme_light">
+        <%-include('inc/header.ejs')%>
+            <main class="main theme_light">
+                <%-body%>
+                <%-include('inc/recent.ejs')%>
+            </main>
+            <textarea name="copy_cite" id="copy_cite"></textarea>
+            <script>
+                (function () {
+                    _$('.copyCite').click(function (e) {
+                        try {
+                            const $cite = this.parentNode.parentNode.childWithClass('citation_text');
+                            const $copyHolder = _('#copy_cite')
+                            $copyHolder.value = $cite.innerText
+                            $copyHolder.select();
+                            document.execCommand('Copy');
+                            $copyHolder.value = ''
+                            Alert({ type: 'success', message: 'copied to clipboard!' })
+                        }
+                        catch (e) {
+                            Alert({ type: 'error', message: 'could not copy to clipboard' })
+                        }
+                    })
+                })()
+            </script>
+                <%-include('inc/footer.ejs')%>
+    </body>
+
+    </html>

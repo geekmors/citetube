@@ -1,0 +1,57 @@
+<div class="container">
+
+    <h2>YouTube Video Citation Machine</h2>
+    <p>Use CiteTube to easily generate citations for APA and MLA formats.</p>
+    <div class="info mb-5">
+        <h3>We use the following formats to generate citations:</h3>
+        <h4>APA 7<sup>th</sup> Edition</h4>
+        <p class="text-italics">
+            Username. (Year, Month Day). Title of video [Video]. YouTube. https://xxxxx
+        </p>
+        <hr>
+        <h4>MLA</h4>
+        <p class="text-italics">
+            “Title of Video.” Website, uploaded by Username, Day Month Year, URL.
+        </p>
+        <p>
+            <span class="text-bold">Note:</span>
+            we do not include the creator's name since we can't tell if the uploader
+            is the same as the creator.
+        </p>
+    </div>
+    <form id="citeForm" method="GET" action="/video">
+        <h2>Get Started</h2>
+        <div class="material-field">
+            <label for="url" class="material-field_label">* Enter YouTube video URL</label>
+            <input id="url" name="url" type="url" class="material-field_input">
+            <div class="material-field_helper">YouTube video url eg. https://www.youtube.com/watch?v=dQw4w9WgXcQ</div>
+        </div>
+        <button class="btn btn_success material-field_button" type="submit">
+            <span class="fas fa-search" aria-hidden="true"></span>
+            Find
+        </button>
+    </form>
+</div>
+<script src="/js/materialForms.js"></script>
+<script>
+    (function () {
+        _('#citeForm').addEventListener('submit', function (e) {
+            e.preventDefault()
+            var url = _('[name="url"]').value
+            if (url != "" && url.replace(/ /g, '').length > 0) {
+                if (url.indexOf('https://www.youtube.com/') == 0) {
+                    e.target.submit()
+                }
+                else {
+                    Alert({ type: 'error', message: `URL entered is not a valid YouTube URL` })
+                    _('#url').focus()
+                }
+            }
+            else {
+                _('#url').parentNode.classList.add('error')
+                Alert({ type: 'error', message: 'Please enter a YouTube URL' })
+                _('#url').focus()
+            }
+        })
+    })()
+</script>

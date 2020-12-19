@@ -1,0 +1,112 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: $font_family_default;
+
+    &.theme_light{
+        background-color: #dcdcdc;
+        color: #1c1c1c;
+    }
+    &.theme_dark{
+
+        background-color: #1c1c1c;
+        color: white;;
+    }
+    font-size: 18px;
+}
+h1{ 
+    font-size: 3rem;
+    @media screen and (max-width: 360px){
+        font-size: 2rem;
+    }
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background-color: white;
+    padding: 2%;
+}
+a{
+    text-decoration: none;
+    font-weight: bold;
+}
+.mt-5{
+    margin-top: 5rem;
+}
+.mb-5{
+    margin-bottom: 5rem;
+}
+.btn{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+    border: none;
+    &_success{
+        padding: 10px;
+        font-size: 18px;        
+        border: 1px solid $color_primary;
+        color: $color_primary;
+        background-color: white;
+        &:hover{
+            background-color: $color_primary;
+            color: white;
+        }
+    }
+}
+.site_name{
+    color: $color_primary;
+}
+.color_danger{
+    color:$danger;
+    &:hover{
+        color:$color_primary;
+    }
+}
+.alert{
+    padding: 2%;
+    border-radius: 5px;
+    font-weight: bold;
+    position: fixed;
+    right: 10px;
+    width: 70%;
+    top: 10px;
+    color: white;
+    
+    z-index: 9999;
+    cursor: pointer;
+    &.error{
+        border: 1px solid $color_error;
+        background-color: $color_error;
+    }
+    &.success{
+        border: 1px solid $color_success;
+        background-color: $color_success;
+    }
+}
+.text-italics{
+    font-style: italic;
+}
+.text-bold{
+    font-weight: bold;
+}
+.text-align{
+    &-right{
+        text-align: right;
+    }
+    &-left{
+        text-align: left;
+    }
+    &-center{
+        text-align: center;
+    }
+}
+p,li,div{
+    line-height: 28px;
+}
+.color_blue{
+    color: $color_tertiary;
+}
