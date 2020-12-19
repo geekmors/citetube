@@ -12,7 +12,7 @@ module.exports = {
     metaDescription(){
         return `
             CiteTube lets you quickly generate citations for YouTube videos for both MLA and APA formats for free, 
-            simply copy the YouTube video URL and create a citation. Get Started now.
+            simply copy the YouTube video URL and create a citation. Get Started Now.
         `
     }
 }
